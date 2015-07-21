@@ -47,7 +47,9 @@ def gen_script():
                     continue
             else:
                 continue
-            f.write('set -g -x %s %s\n' % (k, v.replace(':', ' ')))
+            if k == 'PATH':
+                v = v.replace(':', ' ')
+            f.write('set -g -x %s %s\n' % (k, v))
 
     return name
 
